@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>i am talha — do you know me...</title>
+  <meta name="description" content="hello! this is talha. do you know me. lemme know the world..." />
+
+  <style>
+    /* =============================
+       Root Variables
+    ============================= */
+    :root {
+      --bg: #ffe6e9;       /* Light pink background */
+      --card: #ffd6d9;     /* Card color */
+      --muted: #663c43;    /* Dark wine text */
+      --accent: #ff4d6d;   /* Buttons / highlights */
+      --glass: rgba(255,255,255,0.3); /* Transparent glass effect */
+      --radius: 15px;       /* Default border radius */
+      --max-width: 1200px;  /* Max page width */
+      color-scheme: light;
+    }
+
+    /* =============================
+       Global Styles
+    ============================= */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--muted);
+      padding: 28px;
+      display: flex;
+      justify-content: center;
+      line-height: 1.45;
+    }
+
+    .site { width: 100%; max-width: var(--max-width); }
+
+    h1, h2, h3, h4 { margin: 0; }
+
+    .muted { color: var(--muted); }
+    .btn { cursor: pointer; padding: 8px 10px; border-radius: 10px; border: 0; }
+    .primary { background: var(--accent); color: white; }
+    .pill { background: rgba(255,255,255,0.03); padding: 6px 8px; border-radius: 999px; font-size: 12px; color: var(--muted); }
+
+    /* =============================
+       Header
+    ============================= */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background-image: url("aesthetic.red.boy_!!!!!!_croped_.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+
+    nav { display: flex; gap: 14px; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+    .cta { background: linear-gradient(90deg,var(--accent),#06b6d4); padding: 10px 14px; border-radius: 10px; color: white; font-weight: 700; text-decoration: none; }
+
+    /* =============================
+       Hero Section
+    ============================= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 22px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+
+    .hero h2 { font-size: 28px; margin-bottom: 8px; }
+    .hero p { margin-bottom: 16px; }
+
+    .search {
+      display: flex;
+      gap: 8px;
+      background: var(--glass);
+      padding: 10px;
+      border-radius: 12px;
+      align-items: center;
+    }
+    .search input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      outline: none;
+      color: inherit;
+      padding: 8px;
+      font-size: 15px;
+    }
+    .search button {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    /* Hero aside cards */
+    aside { display: flex; flex-direction: column; gap: 12px; }
+    .card { background: var(--card); padding: 14px; border-radius: 12px; }
+
+    .founder-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #7c3aed;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Courses grid */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 18px 0; }
+    .course { background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding: 14px; border-radius: 12px; }
+    .course img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+    .course h3 { margin: 0 0 6px 0; font-size: 16px; }
+    .course p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    /* Footer */
+    footer { margin-top: 22px; text-align: center; color: var(--muted); font-size: 14px; }
+
+    /* Live Clock */
+    #live-clock {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--accent);
+      margin-top: 20px;
+      background: var(--card);
+      padding: 10px 18px;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,6,23,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+    .modal {
+      background: linear-gradient(180deg,#071024, #071022);
+      padding: 18px;
+      border-radius: 12px;
+      max-width: 760px;
+      width: 100%;
+    }
+    .close { float: right; border: 0; background: transparent; color: var(--muted); font-weight: 700; cursor: pointer; }
+
+    /* Responsive */
+    @media (max-width:980px) { .hero { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:600px) { body { padding:14px } .grid { grid-template-columns:1fr } nav { display:none } .logo{width:44px;height:44px} }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>TALHA-塔尔哈</h1>
+          <div class="muted" style="font-size:23px">a defeated warrior</div>
+        </div>
+      </div>
+
+      <div id="live-clock">00:00:00</div>
+
+      <nav>
+        <a href="#YVhere">Youtube Videos</a>
+        <a href="#A&M">Admin & Moderators</a>
+        <a href="#about">About</a>
+        <a class="cta" id="open-login">Login</a>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-card">
+          <h2>بسم الله الرحمن الرحيم </h2>
+          <p class="muted">hello! this Talha, do you know me... lemme think about the universe.</p>
+
+          <!-- Search -->
+          <div class="search">
+            <input type="search" id="search" placeholder="type your words here..." />
+            <button id="search-btn">Search</button>
+            <button class="pill" id="filter-btn">Filter</button>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn primary" id="show-all">Show all</button>
+            <button class="btn" id="new-course">+add new</button>
+            <div style="flex:1"></div>
+            <span class="pill">...</span>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside>
+          <div class="card">
+            <h4>Tacit parole</h4>
+            <img src="nature_aesthetic.jpg" alt="preview" style="width:100%;border-radius:8px;object-fit:cover;max-height:150px;margin-bottom:10px;">
+            <div class="muted">fell the existence! — Talha</div>
+			<div class="muted">Enjoy existence, before it ceases to exist.</div>
+            <div style="margin-top:10px"><button class="btn primary" id="watch-preview">!</button></div>
+          </div>
+
+          <div class="card">
+            <h4>WEB-MASTER</h4>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+              <img src="oposite_head_cat.jpeg" class="founder-img" alt="Founder">
+              <div>
+                <div style="font-weight:700">MD. Talha Jubayer</div>
+                <div class="muted" style="font-size:13px">ancient soul</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Youtube Videos -->
+      <section>
+        <h3 id="YVhere">My Youtube Videos</h3>
+        <div class="grid" id="courses-grid"></div>
+      </section>
+
+      <!-- Moderators & Admins -->
+      <section id="A&M" style="margin-top:18px">
+        <h3>Moderators & Admins</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+          <div class="course" style="width:220px">
+            <img src="asthetic_girl.jpg" alt="teacher">
+            <h3>Yill</h3>
+            <p class="muted">Admin • 7...∞ ★</p>
+          </div>
+          <div class="course" style="width:220px">
+            <img src="the_cool-danger_cat.jpg" alt="teacher">
+            <h3>Mr. Darkcot</h3>
+            <p class="muted">Moderator • 0/∞ ★</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" style="margin-top:60px">
+        <h3>About Me</h3>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+          <img src="oposite_head_cat.jpeg" alt="Talha" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)">
+          <div style="max-width:600px">
+            <p>নিজের পরিচয় লিখার সময় খেয়াল করলাম ঘড়ির ভিতর থেকে হাসির আওয়াজ আসছে। দৈবাৎ ঘড়ির দিক তাকালাম। নিজের সম্পর্কে এতো এতো মিথ্যে কথা লিখতেছিলাম যে ঘড়ির ভিতরের সময় আর আমার কারোরই হাসি এখন থামছে না!</p>
+            <p class="muted">You can follow my journey through this website and my YouTube videos.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>© <span id="year"></span> i am talha —All rights reserved by Talha</p>
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="close" id="close-modal">✕</button>
+      <h3 id="modal-title">Course preview</h3>
+      <div style="margin-top:10px">
+        <video id="preview-video" controls style="width:100%;border-radius:10px;max-height:420px">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    /* -----------------------------
+       Live Clock
+    ----------------------------- */
+    function updateClock() {
+      const now = new Date();
+      let h = now.getHours().toString().padStart(2,'0');
+      let m = now.getMinutes().toString().padStart(2,'0');
+      let s = now.getSeconds().toString().padStart(2,'0');
+      document.getElementById('live-clock').textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock,1000);
+    updateClock();
+
+    /* -----------------------------
+       Course Data
+    ----------------------------- */
+    const courses = [
+      {id:1,title:'১০০ বছর আছে আইনস্টাইনকে পাঠানো সত্যেন বোসের চিঠি',desc:'Details about Satyen Bose\'s letter to Einstein 100 years ago',video:'https://www.youtube.com/embed/zPLaLOucqKI',length:'3m 11sec'},
+      {id:2,title:'ওজন ও ভরের মধ্যে পার্থক্য',desc:'Here I discussed about the differences between mass and force.',video:'https://www.youtube.com/embed/82uPk1nbiZ0',length:'1m 12sec'},
+      {id:3,title:'How to do better in Islam exam.',desc:'Tips for do well in Islam exam.',video:'https://youtu.be/1k0rrhSASFI?',length:'1m 6sec'}
+    ];
+
+    const grid = document.getElementById('courses-grid');
+    const yearSpan = document.getElementById('year');
+    yearSpan.textContent = new Date().getFullYear();
+
+    function renderCourses(list){
+      grid.innerHTML = '';
+      list.forEach(c=>{
+        const el = document.createElement('article');
+        el.className = 'course';
+        el.innerHTML = `
+          <iframe width="100%" height="200" src="${c.video}" title="${c.title}" frameborder="0" allowfullscreen></iframe>
+          <h3>${c.title}</h3>
+          <p class="muted">${c.desc}</p>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+            <small class="muted">${c.length}</small>
+            <button class="btn" onclick="openPreview(${c.id})">Preview</button>
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+    }
+    renderCourses(courses);
+
+    function openPreview(id){
+      const course = courses.find(c=>c.id===id);
+      document.getElementById('modal-title').textContent = course.title + ' — Preview';
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('modal').setAttribute('aria-hidden','false');
+      document.getElementById('preview-video').play().catch(()=>{});
+    }
+    function closePreview(){
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('modal').setAttribute('aria-hidden','true');
+      const v = document.getElementById('preview-video'); v.pause(); v.currentTime = 0;
+    }
+
+    document.getElementById('close-modal').addEventListener('click',closePreview);
+    document.getElementById('modal').addEventListener('click',(e)=>{if(e.target.id==='modal') closePreview();});
+
+    // Search
+    document.getElementById('search-btn').addEventListener('click',()=>{
+      const q = document.getElementById('search').value.trim().toLowerCase();
+      if(!q){ renderCourses(courses); return; }
+      const filtered = courses.filter(c=>(c.title+' '+c.desc).toLowerCase().includes(q));
+      if(filtered.length===0){
+        grid.innerHTML = `<p style="color:var(--muted);margin-top:12px;font-size:16px">No results found for "${q}"</p>`;
+      } else renderCourses(filtered);
+    });
+    document.getElementById('search').addEventListener('keydown',(e)=>{if(e.key==='Enter') document.getElementById('search-btn').click();});
+
+    // Show all
+    document.getElementById('show-all').addEventListener('click',()=>renderCourses(courses));
+
+    // Login demo
+    document.getElementById('open-login').addEventListener('click',()=>{
+      const name = prompt('Enter your name to sign in (demo):','Talha');
+      if(name) alert('Hi '+name+'! This is a demo sign-in.');
+    });
+
+    // New course demo
+    document.getElementById('new-course').addEventListener('click',()=>{
+      const title = prompt('New course title');
+      if(!title) return alert('Canceled');
+      courses.unshift({id:Date.now(), title, desc:'No description yet', video:'https://www.youtube.com/embed/1k0rrhSASFI', length:'0m 0s'});
+      renderCourses(courses);
+      alert('New idea added!');
+    });
+
+  </script>
+</body>
+</html>
